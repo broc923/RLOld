@@ -1,0 +1,40 @@
+<html>
+<!-- HTML Start Here -->
+<!-- HTML Head is used for scripts, linking files (such as CSS), and numerous other things not meant to display -->
+<head>
+	<!-- Javascript Start Here -->
+	<script>
+		function calc() { //Function that gets called onchange of line 23.
+			var cc1PriceEach = 1.79; //Variable holds default value for crate one prices we sell at 
+			var cc1CostEach = 0.9995; //variable holds default value for crate one prices we pay for them
+
+			var cc1TotalPrice = document.getElementById("cc1").value * cc1PriceEach; /*This variable looks at the ID cc1 (see line 29) and gets the value from it,
+																					   which is the number selected in the counter and multiplies that number by the price
+																					   we make per crate and stores the value*/
+			var cc1TotalCost = document.getElementById("cc1").value * cc1CostEach; //similar to above except multiples by how much we pay for each crate
+
+			document.getElementById("cc1TotalPrice").innerHTML = "They pay us: $" + cc1TotalPrice; /*Changes the innerHTML(the data between open and close of something) of line 33
+																								     due to finding the element with the ID specified and setting the innerHTML = to some
+																								     text for neatness + the total price of cc1s that they pay us*/
+			document.getElementById("cc1TotalCost").innerHTML = "We pay them: $" + cc1TotalCost; /*Same as above except setting the innerHTML = to some
+																								   text for neatness + the total price of cc1s that we pay them (see line 34)*/
+			var ppFee = (cc1TotalPrice * 0.029) - 0.30;
+			document.getElementById("cc1AfterFee").innerHTML = "After Fees We Make: $" + (cc1TotalPrice - ppFee);
+		}
+	</script>
+	<!-- Javascript End Here -->
+</head>
+<!-- HTML Body is used for text, and basically anything you want to a user to be able to see -->
+<body>
+	Keys <!-- Notice how text can simply be typed if you don't need it to appear a certain way? -->
+	<br /> <!-- This is shorthand for a break, or otherwise known as pressing enter on a keyboard. It jumps you down a line on the page -->
+	<input id="cc1" type="number" min="0" value="0" onchange="calc()" /> <!-- This is a special input type known as number. It only allows numbers to be entered. min = Lowest value possible
+																		      value = the value it starts on page loadup, as this will change when the user changed the number
+																			  onchange simply allows you to call a javascript function by name when the value gets changed,
+																			  see onclick for buttons/pictures/etc -->
+	<p id="cc1TotalPrice">They pay us: $0.00</p> <!-- Some text inside a paragraph so there's spacing AND we can reference the ID on line 16 -->
+	<p id="cc1TotalCost">We pay them: $0.00</p> <!-- Same as above, but referenced on line 19 -->
+	<p id="cc1AfterFee">After PP Fees We Make: $0.00</p>
+</body>
+<!-- HTML End Here -->
+</html>
